@@ -23,8 +23,8 @@ replay = pygame.transform.scale(replay, (80, 80))
 replay_image = pygame.surface.Surface((80, 80))
 replay_image.fill((200, 255, 255))
 replay_image.blit(replay, (0, 0))
-font_num = pygame.font.Font('C:/Windows/Fonts/STXINGKA.TTF', 20)
-font_up = pygame.font.Font('C:/Windows/Fonts/STXINGKA.TTF', 80)
+font_num = pygame.font.Font(r"C:\Windows\Fonts\simkai.ttf", 20)
+font_up = pygame.font.Font(r"C:\Windows\Fonts\simkai.ttf", 70)
 
 
 class Button(pygame.sprite.Sprite):

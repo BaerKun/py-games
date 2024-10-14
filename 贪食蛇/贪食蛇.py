@@ -31,8 +31,8 @@ score = 0
 shit_if = False
 have_eaten = 0
 
-font_50 = font.Font("C:/Windows/Fonts/STXINGKA.TTF", 50)
-font_200 = font.Font("C:/Windows/Fonts/STXINGKA.TTF", 200)
+font_50 = font.Font(r"C:\Windows\Fonts\simkai.ttf", 50)
+font_200 = font.Font(r"C:\Windows\Fonts\simkai.ttf", 200)
 pause = font_200.render('暂停', True, (0, 0, 0))
 pause_size = pause.get_size()
 clock = time.Clock()

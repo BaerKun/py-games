@@ -51,8 +51,8 @@ bear_image = pygame.image.load('bear.png')
 bear_image = pygame.transform.scale(bear_image, (2 * bear_r, 2 * bear_r))
 head_image = snake_cold
 
-font_100 = pygame.font.Font("C:/Windows/Fonts/STXINGKA.TTF", 100)
-font_50 = pygame.font.Font("C:/Windows/Fonts/STXINGKA.TTF", 50)
+font_100 = pygame.font.Font(r"C:\Windows\Fonts\simkai.ttf", 100)
+font_50 = pygame.font.Font(r"C:\Windows\Fonts\simkai.ttf", 50)
 text_snake = font_50.render('斯内克', True, (100, 50, 0))
 text_snake_size = text_snake.get_size()
 text_over = font_100.render('GAME OVER', True, (0, 0, 0))
@@ -166,7 +166,7 @@ while True:
 
     pygame.display.update()
 
-    if snake_blood_/2 <= snake_blood <= 0.8 * snake_blood_ or snake_blood <= snake_blood_ * 0.4:
+    if snake_blood_ / 2 <= snake_blood <= 0.8 * snake_blood_ or snake_blood <= snake_blood_ * 0.4:
         snake_speed_, acc, head_image = snake_speed_fast, acc_fast, snake_hot
     else:
         snake_speed_, acc, head_image = snake_speed_slow, acc_slow, snake_cold
