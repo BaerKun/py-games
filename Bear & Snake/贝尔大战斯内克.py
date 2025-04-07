@@ -68,17 +68,17 @@ def distance(one, two):
 
 
 def triangle(beginning, end):
-    l = distance(beginning, end)
-    c = (end[0] - beginning[0]) / l
-    s = (end[1] - beginning[1]) / l
+    d = distance(beginning, end)
+    c = (end[0] - beginning[0]) / d
+    s = (end[1] - beginning[1]) / d
     return c, s
 
 
 def snake_move(beginning, end, speed):
-    l = distance(beginning, end)
-    co = (end[0] - beginning[0]) / l
-    si = (end[1] - beginning[1]) / l
-    a = acc * l / snake_body_r / 5
+    d = distance(beginning, end)
+    co = (end[0] - beginning[0]) / d
+    si = (end[1] - beginning[1]) / d
+    a = acc * d / snake_body_r / 5
     v_x = speed[0] + co * a
     v_y = speed[1] + si * a
     v = (v_x ** 2 + v_y ** 2) ** 0.5
@@ -89,8 +89,8 @@ def snake_move(beginning, end, speed):
 
 
 def bear_move(beginning, end):
-    l = distance(beginning, end)
-    if l <= bear_speed_ / 2:
+    d = distance(beginning, end)
+    if d <= bear_speed_ / 2:
         si = co = 0
     else:
         co, si = triangle(beginning, end)
