@@ -6,8 +6,9 @@ s = 50
 w, h = s * 18, s * 12
 scr = pygame.display.set_mode((w, h))
 
-font_small = pygame.font.Font('C:/Windows/Fonts/STXINGKA.TTF', 11)
-font_big = pygame.font.Font('C:/Windows/Fonts/STXINGKA.TTF', 50)
+font_path = 'fonts/Arial.ttf'
+font_small = pygame.font.Font(font_path, 11)
+font_big = pygame.font.Font(font_path, 50)
 clock = pygame.time.Clock()
 t = 0
 

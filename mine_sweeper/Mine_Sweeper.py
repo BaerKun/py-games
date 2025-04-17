@@ -4,7 +4,7 @@ import time
 
 HEADER_HEIGHT = 100
 SCREEN_WIDTH, SCREEN_HEIGHT = 520, 620
-GRID_SIZE, COUNT_MINES = 20, 40
+GRID_SIZE, COUNT_MINES = 20, 99
 
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))

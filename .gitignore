@@ -1,5 +1,5 @@
-*.DS_Store
-cmake-build-debug
+__pycache__
 .idea
-.vscode
-tmp*
+
+_*
+.DS_Store

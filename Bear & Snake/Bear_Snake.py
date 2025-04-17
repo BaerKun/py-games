@@ -1,5 +1,6 @@
 import pygame
 import random
+import os
 
 pygame.init()
 
@@ -7,7 +8,7 @@ w, h = 1000, 800
 scr = pygame.display.set_mode((w, h))
 scr.fill((250, 250, 200))
 
-pygame.display.set_caption("贝尔大战斯内克")
+pygame.display.set_caption("Bear vs Snake")
 
 # ————snake————
 snake_head = (50, 50)
@@ -51,9 +52,10 @@ bear_image = pygame.image.load('bear.png')
 bear_image = pygame.transform.scale(bear_image, (2 * bear_r, 2 * bear_r))
 head_image = snake_cold
 
-font_100 = pygame.font.Font(r"C:\Windows\Fonts\simkai.ttf", 100)
-font_50 = pygame.font.Font(r"C:\Windows\Fonts\simkai.ttf", 50)
-text_snake = font_50.render('斯内克', True, (100, 50, 0))
+font_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'fonts/Arial.ttf')
+font_100 = pygame.font.Font(font_path, 100)
+font_50 = pygame.font.Font(font_path, 50)
+text_snake = font_50.render('SNAKE', True, (100, 50, 0))
 text_snake_size = text_snake.get_size()
 text_over = font_100.render('GAME OVER', True, (0, 0, 0))
 text_over_size = text_over.get_size()

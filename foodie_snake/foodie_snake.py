@@ -1,13 +1,14 @@
-from pygame import*
-from random import*
+import pygame
+import random
+import os
 
-init()
+pygame.init()
 
 w, h = 1000, 800
-scr = display.set_mode((w, h))
+scr = pygame.display.set_mode((w, h))
 scr.fill((250, 250, 200))
 
-display.set_caption("贪食蛇")
+pygame.display.set_caption("foodie snake")
 
 # ————snake————
 snake_head = 100, 100
@@ -20,25 +21,26 @@ snake_speed_ = 5
 
 food_all = {}
 food_size = 40
-apple_image = image.load('apple.png')
-apple = transform.scale(apple_image, (food_size, food_size))
-banana_image = image.load('banana.png')
-banana = transform.scale(banana_image, (food_size, food_size))
-shit_image = image.load('shit.png')
-shit = transform.scale(shit_image, (food_size, food_size))
+apple_image = pygame.image.load('apple.png')
+apple = pygame.transform.scale(apple_image, (food_size, food_size))
+banana_image = pygame.image.load('banana.png')
+banana = pygame.transform.scale(banana_image, (food_size, food_size))
+shit_image = pygame.image.load('shit.png')
+shit = pygame.transform.scale(shit_image, (food_size, food_size))
 food_total = [apple, banana]
 score = 0
 shit_if = False
 have_eaten = 0
 
-font_50 = font.Font(r"C:\Windows\Fonts\simkai.ttf", 50)
-font_200 = font.Font(r"C:\Windows\Fonts\simkai.ttf", 200)
-pause = font_200.render('暂停', True, (0, 0, 0))
+font_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'fonts/Arial.ttf')
+font_50 = pygame.font.Font(font_path, 50)
+font_200 = pygame.font.Font(font_path, 200)
+pause = font_200.render('PAUSE', True, (0, 0, 0))
 pause_size = pause.get_size()
-clock = time.Clock()
+clock = pygame.time.Clock()
 t = 0
 
-display.flip()
+pygame.display.flip()
 
 
 def distance(one, two):
@@ -49,10 +51,10 @@ while True:
     clock.tick(60)
     t += 1
 
-    for event1 in event.get():
-        if event1.type == QUIT:
+    for event1 in pygame.event.get():
+        if event1.type == pygame.QUIT:
             exit()
-        if event1.type == KEYDOWN:
+        if event1.type == pygame.KEYDOWN:
             match event1.key:
                 case 119:
                     snake_speed = (0, -snake_speed_)
@@ -64,13 +66,13 @@ while True:
                     snake_speed = (snake_speed_, 0)
                 case 27:
                     scr.blit(pause, ((w - pause_size[0]) / 2, (h - pause_size[1]) / 2))
-                    display.update()
+                    pygame.display.update()
                     flag = True
                     while flag:
-                        for event2 in event.get():
-                            if event2.type == QUIT:
+                        for event2 in pygame.event.get():
+                            if event2.type == pygame.QUIT:
                                 exit()
-                            if event2.type == KEYDOWN:
+                            if event2.type == pygame.KEYDOWN:
                                 if event2.key == 27:
                                     flag = False
 
@@ -80,18 +82,18 @@ while True:
     for i in range(length - 1, 0, -1):
         snake_body[i] = snake_body[i - 1]
         if i % 12 <= 5:
-            draw.circle(scr, (100, 100, 100), snake_body[i], snake_r, 0)
+            pygame.draw.circle(scr, (100, 100, 100), snake_body[i], snake_r, 0)
         else:
-            draw.circle(scr, (200, 200, 0), snake_body[i], snake_r, 0)
+            pygame.draw.circle(scr, (200, 200, 0), snake_body[i], snake_r, 0)
 
     # ————food————
     if t == 300:
-        food_pos = (randint(food_size // 2, w - food_size // 2),
-                    randint(food_size // 2, h - food_size // 2))
+        food_pos = (random.randint(food_size // 2, w - food_size // 2),
+                    random.randint(food_size // 2, h - food_size // 2))
         while distance(snake_head, food_pos) < 10 * snake_r:
-            food_pos = (randint(food_size // 2, w - food_size // 2),
-                        randint(food_size // 2, h - food_size // 2))
-        food_all[food_pos] = choice(food_total)
+            food_pos = (random.randint(food_size // 2, w - food_size // 2),
+                        random.randint(food_size // 2, h - food_size // 2))
+        food_all[food_pos] = random.choice(food_total)
         t -= 180
 
     for pos, food in food_all.items():
@@ -99,10 +101,10 @@ while True:
 
     # ————snake's head————
     snake_body[0] = snake_head
-    draw.circle(scr, (100, 100, 100), snake_body[0], snake_r, 0)
+    pygame.draw.circle(scr, (100, 100, 100), snake_body[0], snake_r, 0)
 
     snake_head = snake_head[0] + snake_speed[0], snake_head[1] + snake_speed[1]
-    draw.circle(scr, (200, 200, 200), snake_head, snake_r, 0)
+    pygame.draw.circle(scr, (200, 200, 200), snake_head, snake_r, 0)
 
     # ————eat————
     food_del = []
@@ -132,7 +134,7 @@ while True:
         shit_if = False
 
     # ————score————
-    score_image = font_50.render(f'得分: {score}', True, (0, 0, 0))
+    score_image = font_50.render(f'Score: {score}', True, (0, 0, 0))
     scr.blit(score_image, (20, 10))
 
-    display.update()
+    pygame.display.update()

@@ -14,9 +14,9 @@ pygame.display.flip()
 
 
 class ForceField(pygame.sprite.Sprite):
-    def __init__(self, x,y,w,h):
+    def __init__(self, x, y, w, h):
         super().__init__()
-        self.rect = pygame.Rect(x,y,w,h)
+        self.rect = pygame.Rect(x, y, w, h)
 
 
 clock = pygame.time.Clock()
